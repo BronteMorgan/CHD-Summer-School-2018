@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Sample Experiment (Bronte)</title>
+    <script src="./js/jspsych.js"></script>
+    <link href="./js/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  
+  <body>
+    <!-- Starting screen -->
+	  <div class="start" style="width: 1000px">
+		  <!-- Text box for the splash page -->
+		  <div class="start" style="text-align:left; border:0px solid; padding:10px; width:800px; float:right; font-size:90%">
+			  <p><b>"The Spheres of Sodor"</b> is a short psychological study investigating how people make decisions.</p>
+			   <!-- Next button for the splash page -->
+        <p align="center"> 
+        <input type="button" id="splashButton" class="start jspsych-btn" value="Start!" onclick="splashButtonClick()"> </p>
+		  </div>
+	  </div>
+	</body>
+	
+	<script>
+	   /** USEFUL FUNCTIONS **/
+    
+    // Function when you click on first start button
+    function splashButtonClick() {
+      setDisplay('start', 'none');
+      setDisplay('consent', '');
+    }
+    
+    // Function to change the display property of a set of objects
+      function setDisplay(theClass, theValue) {
+        var i, classElements = document.getElementsByClassName(theClass);
+        for (i = 0; i < classElements.length; i = i + 1) {
+            classElements[i].style.display = theValue;
+        }
+      }
+      
+    // start experiment
+    function startExperiment(){ 
+      setDisplay('consent','none');
+      jsPsych.init({
+        timeline: [instruction_check]
+      })
+    }
+  </script>
+
+</html>
